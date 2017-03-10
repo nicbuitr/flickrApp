@@ -13,10 +13,26 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>flickr App</title>
+    <!-- Start of Bootstrap Libraries -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js></script>
+    <!-- End of Bootstrap Libraries -->    
   </head>
   <body>
-    <div id="root"></div>
+    <header class="header">
+      <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">flickrApp</a>
+            </div>
+        </div>
+      </div>
+    </header>
+    <section>
+      <div id="root"></div>
+    </section>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

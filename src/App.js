@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-var ImageSearch = require("./ImageSearch.js");
+import PhotoSearch from './PhotoSearch.js';
+
 
 class App extends Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+        photos:[]
+      };
+    }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <div className="container">
+        <div className="jumbotron">
+            <div className="container">
+              <PhotoSearch photos={this.state.photos} />
+            </div>              
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-          <div className="row">
-              <div className="col-md-12">
-                <ImageSearch />
-              </div>              
-          </div>
-        </p>
       </div>
     );
   }
