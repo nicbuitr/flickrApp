@@ -1,2 +1,6 @@
 # Dependency directories
 node_modules
+
+# ApiKey Files
+./server/api_key.txt
+./server/api_secret.txt
