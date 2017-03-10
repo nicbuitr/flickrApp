@@ -63,7 +63,7 @@ class PhotoSearch extends Component {
       for (var i = 0; i < photos.length; i++) {
         if(i%3 === 0){
             row1.push(
-              <div className="columns col-md-2">
+              <div className="columns col-xs-2">
                 <Photo photo={photos[i]} key={"photo_"+i} />
                 <hr/>
               </div>
@@ -71,7 +71,7 @@ class PhotoSearch extends Component {
           }
           else if(i%3===1){
             row2.push(
-              <div className="columns col-md-2">
+              <div className="columns col-xs-2">
                 <Photo photo={photos[i]} key={"photo_"+i} />
                 <hr/>
               </div>
@@ -79,7 +79,7 @@ class PhotoSearch extends Component {
           }
           else{
             row3.push(
-              <div className="columns col-md-2">
+              <div className="columns col-xs-2">
                 <Photo photo={photos[i]} key={"photo_"+i} />
                 <hr/>
               </div>

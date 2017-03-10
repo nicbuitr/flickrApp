@@ -16,11 +16,7 @@ class Photo extends Component {
 
     render(){
         return(
-          <div className="row">
-            <div className="row text-center">
-                  <img src={this.getUrl()} className="img-responsive" />
-              </div>
-          </div>
+          <img src={this.getUrl()} className="img-responsive" />
         );
     }
 }
