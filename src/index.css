@@ -5,3 +5,7 @@ body {
 .header {
 	padding: 3%;
 }
+
+.columns {
+	width: 14%;
+}

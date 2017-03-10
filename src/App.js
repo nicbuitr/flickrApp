@@ -3,19 +3,12 @@ import PhotoSearch from './PhotoSearch.js';
 
 
 class App extends Component {
-  constructor(props) {
-      super(props);
-      this.state = {
-        photos:[]
-      };
-    }
-
   render() {
     return (
       <div className="container">
         <div className="jumbotron">
             <div className="container">
-              <PhotoSearch photos={this.state.photos} />
+              <PhotoSearch />
             </div>              
         </div>
       </div>

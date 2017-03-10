@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Photo from './Photo.js';
+import axios from 'axios';
 
 class PhotoSearch extends Component {
 
@@ -7,51 +8,91 @@ class PhotoSearch extends Component {
       super(props);
       this.state = {
         query:"",
-        photos:[]
+        colors:["red","orange", "yellow", "green", "blue","indigo", "violet" ],
+        photos:[],
       };
     }
     
 
-    searchPhoto(e){
+    searchPhotos(e){
       e.preventDefault();
+      var photoArray = [];
+      var query = this.state.query;
+      var that = this;
 
-      var photos = fetch('/flickr/' + this.state.query)
-      .then(function(response) {
-          console.log(response);
-          console.log(response.json());
-          return response.json();     
-      })
-      .then(function(promise, callback) {
-        console.log("Gotit!");
-        console.log(promise);
-        console.log(promise.photos);
-        console.log(promise.photos.photo);
-        callback(promise.photos.photo);
-      })
-      .catch(function(error) {
-        console.log('There has been a problem with your fetch operation: ' + error.message);
-      });
+       axios.all([
+          axios.get('/flickr/'+ query + " " + this.state.colors[0]),
+          axios.get('/flickr/'+ query + " " + this.state.colors[1]),
+          axios.get('/flickr/'+ query + " " + this.state.colors[2]),
+          axios.get('/flickr/'+ query + " " + this.state.colors[3]),
+          axios.get('/flickr/'+ query + " " + this.state.colors[4]),
+          axios.get('/flickr/'+ query + " " + this.state.colors[5]),
+          axios.get('/flickr/'+ query + " " + this.state.colors[6])
+        ])
+       .then(axios.spread(function (red, orange, yellow, green, blue, indigo, violet){
+           
+           photoArray = photoArray.concat(red.data.photos.photo.splice(0,3));
+           photoArray = photoArray.concat(orange.data.photos.photo.splice(0,3));
+           photoArray = photoArray.concat(yellow.data.photos.photo.splice(0,3));
+           photoArray = photoArray.concat(green.data.photos.photo.splice(0,3));
+           photoArray = photoArray.concat(blue.data.photos.photo.splice(0,3));
+           photoArray = photoArray.concat(indigo.data.photos.photo.splice(0,3));
+           photoArray = photoArray.concat(violet.data.photos.photo.splice(0,3));
+
+           console.log(photoArray);
+            that.setState({
+               photos: photoArray
+            });
+
+        }))
 
       console.log(this);
-      this.setState({photos:photos});
 
-    }
+   }
 
     handleInputChange(e){
       e.preventDefault();
-      var state = this.state;
-      state.query = e.target.value;
-      this.setState(state);
+      this.setState({query: e.target.value});
     }
 
     render(){
+      var row1 = [];
+      var row2 = [];
+      var row3 = [];
+      var photos = this.state.photos;
+      for (var i = 0; i < photos.length; i++) {
+        if(i%3 === 0){
+            row1.push(
+              <div className="columns col-md-2">
+                <Photo photo={photos[i]} key={"photo_"+i} />
+                <hr/>
+              </div>
+              );
+          }
+          else if(i%3===1){
+            row2.push(
+              <div className="columns col-md-2">
+                <Photo photo={photos[i]} key={"photo_"+i} />
+                <hr/>
+              </div>
+              );
+          }
+          else{
+            row3.push(
+              <div className="columns col-md-2">
+                <Photo photo={photos[i]} key={"photo_"+i} />
+                <hr/>
+              </div>
+              );
+          }
+        }           
         return(
           <div className="row">
             <div className="text-center">
               <h2>Search Flickr Photos</h2>
               <hr/>
             </div>
-            <form className="form" onSubmit={this.searchPhoto.bind(this)}>             
+            <form className="form" onSubmit={this.searchPhotos.bind(this)}>             
               <div className="form-group">
                 <label className="control-label" htmlFor="query">Search photos of: </label>
                 <input className="form-control" type="text" id="query" name="query" value={this.state.query} onChange={this.handleInputChange.bind(this)} placeholder="Insert a search term"></input>                    
@@ -62,13 +103,9 @@ class PhotoSearch extends Component {
               </div>
             </form>
             <div className="row reviews text-center">
-                {
-                  this.props.photos.map(function(photo,index){
-                      return(
-                          <Photo photo={photo} key={"photo_"+index} />
-                      )         
-                  })
-                }
+                {row1}
+                {row2}
+                {row3}
               </div>
           </div>
         )
