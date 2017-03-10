@@ -1,3 +1,5 @@
+nicbuitr: Added some bootstrap features to make it look nicer and used axios to get the flickr api response and process it.
+
 # Node + Express + create-react-app + flickrApi Boilerplate
 
 This is a simple project that helps bootstrap projects that use create-react-app + node + express + flickrapi
