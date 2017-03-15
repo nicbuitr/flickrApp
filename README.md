@@ -2,7 +2,7 @@
 - This app uses Node + Express + React
 - Connects to Flickr API and uses Axios to easily interact with the response.
 - Uses bootstrap features to improve the look & feel.
-- Front End is integrated with Back End
+- Front End integrates correctly with Back End
 - Creativity Addon: Ensured responsiveness with help of bootstrap to improve UI friendliness to users of multiple viewport devices.
 - Extra Work: Implemented scalable and dynamic code to avoid redundant code in an effort to make the app as lightweight as possible and also to make it much more understandable and easy to interpret for both developers and browsers.
 - The app is deployed at: https://nicbuitr-flickrapp.herokuapp.com/
