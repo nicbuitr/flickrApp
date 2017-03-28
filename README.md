@@ -3,7 +3,7 @@
 - Connects to Flickr API and uses Axios to easily interact with the response.
 - Uses bootstrap features to improve the look & feel.
 - Front End integrates correctly with Back End
-- Creativity Addon: Ensured responsiveness with help of bootstrap to improve UI friendliness to users of multiple viewport devices.
+- **Creativity Addon: Ensured responsiveness with help of bootstrap to improve UI friendliness to users of multiple viewport devices.**
 - Extra Work: Implemented scalable and dynamic code to avoid redundant code in an effort to make the app as lightweight as possible and also to make it much more understandable and easy to interpret for both developers and browsers.
 - The app is deployed at: https://nicbuitr-flickrapp.herokuapp.com/
   ## NOTE: The Flickr APP takes some time to respond so please try to be patient.
