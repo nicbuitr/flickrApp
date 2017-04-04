@@ -12,7 +12,7 @@ class PhotoSearch extends Component {
         photos:[],
       };
     }
-    
+
 
     searchPhotos(e){
       e.preventDefault();
@@ -30,7 +30,7 @@ class PhotoSearch extends Component {
           axios.get('/flickr/'+ query + " " + this.state.colors[6])
         ])
        .then(axios.spread(function (red, orange, yellow, green, blue, indigo, violet){
-           
+
            photoArray = photoArray.concat(red.data.photos.photo.splice(0,3));
            photoArray = photoArray.concat(orange.data.photos.photo.splice(0,3));
            photoArray = photoArray.concat(yellow.data.photos.photo.splice(0,3));
@@ -61,6 +61,7 @@ class PhotoSearch extends Component {
       var row3 = [];
       var photos = this.state.photos;
       for (var i = 0; i < photos.length; i++) {
+        // John: esta implementación no es muy escalable. Si quiero 10 fotos por columna me tocaría copiar y pegar este código...
         if(i%3 === 0){
             row1.push(
               <div className="columns col-xs-2">
@@ -85,17 +86,17 @@ class PhotoSearch extends Component {
               </div>
               );
           }
-        }           
+        }
         return(
           <div className="row">
             <div className="text-center">
               <h2>Search Flickr Photos</h2>
               <hr/>
             </div>
-            <form className="form" onSubmit={this.searchPhotos.bind(this)}>             
+            <form className="form" onSubmit={this.searchPhotos.bind(this)}>
               <div className="form-group">
                 <label className="control-label" htmlFor="query">Search photos of: </label>
-                <input className="form-control" type="text" id="query" name="query" value={this.state.query} onChange={this.handleInputChange.bind(this)} placeholder="Insert a search term"></input>                    
+                <input className="form-control" type="text" id="query" name="query" value={this.state.query} onChange={this.handleInputChange.bind(this)} placeholder="Insert a search term"></input>
               </div>
               <div className="form-group text-center">
                 <button className="btn-lg" type="submit"  id="reviews-div">Search Photo</button>
